@@ -29,9 +29,9 @@ namespace svr2010
         public byte MaxStamina { get =>  fs.ReadByte(p + 14); set  => fs.WriteByte(p + 14, value); }
         public byte MaxHardcore { get =>  fs.ReadByte(p + 15); set  => fs.WriteByte(p + 15, value); }
         public byte[] MaxStats { get => new byte[] { MaxStrength, MaxSubmission, MaxSpeed, MaxTechnique, MaxDurability, MaxCharisma, MaxStamina, MaxHardcore }; set => fs.WriteBytes(p + 8, value); }
-        public string NameText { get => fs.ReadString(p + 34); set => fs.WriteString(p + 34, value); }
-        public string HUDText { get => fs.ReadString(p + 102); set => fs.WriteString(p + 102, value); }
-        public string Nickname { get => fs.ReadString(p + 170); set => fs.WriteString(p + 170, value); }
+        public string NameText { get => fs.ReadString(p + 34); set { fs.WriteString(p + 34, new string[32].ToString()); fs.WriteString(p + 34, value); } }
+        public string HUDText { get => fs.ReadString(p + 102); set { fs.WriteString(p + 102, new string[32].ToString()); fs.WriteString(p + 102, value); } }
+        public string Nickname { get => fs.ReadString(p + 170); set { fs.WriteString(p + 170, new string[32].ToString()); fs.WriteString(p + 170, value); } }
         public Player(string filename, uint start = 0x0002ACD8) { fs = new fEdit(filename); p = start; }
     }
 
