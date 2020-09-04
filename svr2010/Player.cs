@@ -32,9 +32,7 @@ namespace svr2010
         public string NameText { get => fs.ReadString(p + 34); set { fs.WriteBytes(p + 34, new byte[32]); fs.WriteString(p + 34, value); } }
         public string HUDText { get => fs.ReadString(p + 102); set { fs.WriteBytes(p + 102, new byte[32]); fs.WriteString(p + 102, value); } }
         public string Nickname { get => fs.ReadString(p + 170); set { fs.WriteBytes(p + 170, new byte[32]); fs.WriteString(p + 170, value); } }
-        public Player(string filename, uint start = 0x2979C) { fs = new fEdit(filename); p = start; }
-        public uint[] Stars { get => (uint[])Enum.GetValues(typeof(Stars_e)); }
-        public string[] StarsName { get => Enum.GetNames(typeof(Stars_e)); }
+        public Player(string filename, uint start = 0xA48) { fs = new fEdit(filename); p = start; }
         private enum Stars_e : uint
         {
             Custom0 = 0x2979C,
@@ -135,9 +133,10 @@ namespace svr2010
             Nikki_Bella = 0xD054,
             Todd_Grisham = 0xD66C,
             Trish_Stratus = 0xD770,
-            Bob_Orton = 0xD874,
+            Bob_Orton = 0xD874
         }
-
+        public uint[] Stars { get => (uint[])Enum.GetValues(typeof(Stars_e)); }
+        public string[] StarsName { get => Enum.GetNames(typeof(Stars_e)); }
     }
 
 }
