@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace svr2010
+namespace svr2010 //this is older, check Wrestler.cs for an updated version.
 {
     public class Player //struct is apx 260 | 0x104
     {
