@@ -38,6 +38,10 @@ namespace svr2010
             source = string.Empty;
             return str2;
         }
+        public uint ReadUInt32(uint offset) {
+            byte[] buffer = ReadBytes(offset, 4);
+            return BitConverter.ToUInt32(buffer, 0);
+        }
         public byte ReadByte(uint offset) => ReadBytes(offset, 1)[0];
         public void WriteByte(uint offset, byte data) => WriteBytes(offset, new byte[] { data });
         public void WriteBytes(uint offset, byte[] data)
